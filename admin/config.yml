@@ -1,6 +1,6 @@
 backend:
   name: git-gateway
-  repo: amfkut/kvenadm
+  repo: amfkut/kvenedit
   branch: main                # или master
 
 media_folder: "products/images"
