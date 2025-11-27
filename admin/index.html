@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Редактирование — Decap CMS</title>
+  <!-- Стили Decap CMS (из CDN) -->
+  <link rel="stylesheet" href="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.css">
+  <style>
+    body { margin: 0; font-family: sans-serif; background: #f9f9f9; }
+    #cms { height: 100vh; }
+  </style>
+</head>
+<body>
+  <!-- Контейнер для CMS -->
+  <div id="cms"></div>
+
+  <!-- Загрузка Decap CMS -->
+  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+
+  <!-- Опционально: если нужно задать site ID вручную (если были проблемы с auth) -->
+  <!-- <script>window.netlifySiteID = 'ваш-site-id-из-netlify';</script> -->
+
+  <!-- Инициализация (config.yml подхватится автоматически из той же папки) -->
+  <script>
+    // Ничего больше не нужно — CMS сам найдёт config.yml
+  </script>
+</body>
+</html>
