@@ -1,5 +1,5 @@
 {
-  "main_image": "/products/images/tokimo_snow_crab_.jpg",
+  "main_image": "../products/images/tokimo_snow_crab_.jpg",
   "title": "Снежный краб",
   "description": "Низкокалорийный продукт, в основном состоящий из рыбного белка...",
   "composition": "Сурими, яичный порошок, растительное масло, ароматизатор натуральный крабовый, красители (кармин, маслосмолы паприки).",
@@ -7,7 +7,7 @@
   "packaging": "Вакуум",
   "storage_temp": "от -18°С",
   "shelf_life": "6 месяцев",
-  "sber_image": "/products/images/sber_guy.webp",
+  "sber_image": "../products/images/sber_guy.webp",
   "where_to_buy_text": "Помимо розничных магазинов в вашем населённом пункте, вы можете приобрести нашу продукцию через <strong>Сбермаркет</strong>.",
   "sber_link": "https://kuper.ru/?utm_referrer=https%3a%2f%2fkven.ru%2f"
 }
