@@ -1,28 +1,32 @@
 backend:
   name: github
-  repo: amfkut/kvenedit
-  branch: main                # или master
+  repo: ваш-логин/ваш-репозиторий   # ← ОБЯЗАТЕЛЬНО замените!
+  branch: main
 
 media_folder: "products/images"
 public_folder: "/products/images"
 
+# Глобальные настройки сайта (необязательно, но полезно)
+site_url: https://ваш-логин.github.io/ваш-репозиторий
+display_url: https://ваш-логин.github.io/ваш-репозиторий
+
+# Коллекция: отдельные страницы продукции
 collections:
-  - name: "snow-crab"
-    label: "Снежный краб — редактирование"
-    delete: false
-    files:
-      - label: "Контент страницы Снежный краб"
-        name: "content"
-        file: "products/data/snow-crab.json"   # сюда будет сохраняться всё
-        fields:
-          - { label: "Главное фото",           name: "main_image",     widget: "image",   default: "/products/images/tokimo_snow_crab_.jpg" }
-          - { label: "Заголовок H1",           name: "title",          widget: "string",  default: "Снежный краб" }
-          - { label: "Описание продукта",      name: "description",    widget: "markdown", buttons: ["bold","italic","link"] }
-          - { label: "Состав",                 name: "composition",    widget: "string",  default: "Сурими, яичный порошок…" }
-          - { label: "Вес",                    name: "weight",         widget: "string",  default: "0.160 кг" }
-          - { label: "Упаковка",               name: "packaging",      widget: "string",  default: "Вакуум" }
-          - { label: "Температура хранения",   name: "storage_temp",   widget: "string",  default: "от -18°С" }
-          - { label: "Срок годности",          name: "shelf_life",  widget: "string",  default: "6 месяцев" }
-          - { label: "Фото в блоке «Где купить»", name: "sber_image",  widget: "image",   default: "/products/images/sber_guy.webp" }
-          - { label: "Текст под «Где купить?»", name: "where_to_buy_text", widget: "text", default: "Помимо розничных магазинов… через <strong>Сбермаркет</strong>." }
-          - { label: "Ссылка кнопки Сбермаркет",name: "sber_link",      widget: "string",  default: "https://kuper.ru/?utm_referrer=https%3a%2f%2fkven.ru%2f" }
+  - name: "products"
+    label: "Продукты"
+    folder: "products/data"     # Папка с JSON-файлами
+    create: false              # Запрещаем создавать новые — только редактировать существующие
+    delete: false              # Запрещаем удалять
+    identifier_field: title    # Название в списке — по полю title
+    fields:
+      - { label: "Главное фото", name: "main_image", widget: "image", required: true }
+      - { label: "Заголовок H1", name: "title", widget: "string", required: true }
+      - { label: "Описание продукта", name: "description", widget: "markdown", required: true }
+      - { label: "Состав", name: "composition", widget: "text", required: true }
+      - { label: "Вес", name: "weight", widget: "string", required: true }
+      - { label: "Упаковка", name: "packaging", widget: "string", required: true }
+      - { label: "Температура хранения", name: "storage_temp", widget: "string", required: true }
+      - { label: "Срок годности", name: "shelf_life", widget: "string", required: true }
+      - { label: "Фото в блоке «Где купить»", name: "sber_image", widget: "image", required: true }
+      - { label: "Текст под «Где купить?»", name: "where_to_buy_text", widget: "markdown", required: true }
+      - { label: "Ссылка кнопки «Сбермаркет»", name: "sber_link", widget: "string", required: true }
