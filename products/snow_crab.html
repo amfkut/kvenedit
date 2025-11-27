@@ -132,49 +132,74 @@
 
 <main class="product-detail">
   <div class="product-image">
-    <img src="images/tokimo_snow_crab_.jpg" alt="Снежный краб TOKIMO">
+    <img id="main-image" src="/products/images/tokimo_snow_crab_.jpg" alt="Снежный краб TOKIMO">
   </div>
+
   <div class="product-info">
-    <h1>Снежный краб</h1>
-    <p>Низкокалорийный продукт, в основном состоящий из рыбного белка. Подходит для приготовления множества вкуснейших блюд: салатов, супов, роллов. Изготавливается на японской технологической линии. «Снежный краб» отличается от «Супер снежного» тем, что сегменты продукта после нарезки запаиваются в индивидуальную оболочку, а потом сформированные палочки упаковываются в пачку. Палочки имеют характерную для краба волокнистую структуру.</p>
+    <h1 id="title">Снежный краб</h1>
+
+    <p id="description"></p>
 
     <div class="spec-section">
       <h2>Состав</h2>
-      <p>Сурими, яичный порошок, растительное масло, ароматизатор натуральный крабовый, красители (кармин, маслосмолы паприки).</p>
+      <p id="composition"></p>
     </div>
 
     <div class="spec-section">
       <h2>Вес</h2>
-      <p>0.160 кг</p>
+      <p id="weight"></p>
     </div>
 
     <div class="spec-section">
       <h2>Упаковка</h2>
-      <p>Вакуум</p>
+      <p id="packaging"></p>
     </div>
 
     <div class="spec-section">
       <h2>Температура хранения</h2>
-      <p>от -18°С</p>
+      <p id="storage_temp"></p>
     </div>
 
     <div class="spec-section">
       <h2>Срок годности</h2>
-      <p>6 месяцев</p>
+      <p id="shelf_life"></p>
     </div>
 
     <div class="where-to-buy">
       <div class="where-to-buy-text">
         <h2>Где купить?</h2>
-        <p>Помимо розничных магазинов в вашем населённом пункте, вы можете приобрести нашу продукцию через <strong>Сбермаркет</strong>.</p>
-        <a href="https://kuper.ru/?utm_referrer=https%3a%2f%2fkven.ru%2f" target="_blank" rel="noopener" class="button">Сбермаркет</a>
+        <p id="where_to_buy_text"></p>
+        <a id="sber-button" href="#" target="_blank" rel="noopener" class="button">Сбермаркет</a>
       </div>
       <div class="where-to-buy-img">
-        <img src="images/sber_guy.webp" alt="Сбермаркет — доставка продуктов">
+        <img id="sber-image" src="/products/images/sber_guy.webp" alt="Сбермаркет">
       </div>
     </div>
   </div>
 </main>
+
+<!-- Маленький скрипт — подставляет данные из JSON -->
+<script>
+  fetch('/products/data/snow-crab.json')
+    .then(r => r.json())
+    .then(data => {
+      document.getElementById('main-image').src = data.main_image || '';
+      document.getElementById('title').textContent = data.title || '';
+      document.getElementById('description').innerHTML = marked.parse(data.description || '');
+      document.getElementById('composition').textContent = data.composition || '';
+      document.getElementById('weight').textContent = data.weight || '';
+      document.getElementById('packaging').textContent = data.packaging || '';
+      document.getElementById('storage_temp').textContent = data.storage_temp || '';
+      document.getElementById('shelf_life').textContent = data.shelf_life || '';
+      document.getElementById('sber-image').src = data.sber_image || '';
+      document.getElementById('where_to_buy_text').innerHTML = marked.parse(data.where_to_buy_text || '');
+      document.getElementById('sber-button').href = data.sber_link || '#';
+    })
+    .catch(err => console.error('Не удалось загрузить контент:', err));
+</script>
+
+<!-- marked.js для поддержки markdown → HTML (очень лёгкий, 12 КБ) -->
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 
 <!-- Футер (для файлов внутри папки products/) -->
 <footer class="main-footer">
@@ -213,4 +238,5 @@
 </footer>
 
 </body>
+
 </html>
