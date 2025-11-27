@@ -1,87 +1,27 @@
 backend:
-  name: git-gateway          # Работает через Netlify Identity
-  branch: main               # Или master, если у вас так называется
+  name: git-gateway
+  branch: main                # или master
 
-media_folder: "products/images"         # Куда будут загружаться новые картинки
-public_folder: "/products/images"       # Как они будут доступны на сайте
+media_folder: "products/images"
+public_folder: "/products/images"
 
-# Одна единственная коллекция — эта страница продукта
 collections:
-  - name: "snow-crab-page"
-    label: "Страница «Снежный краб»"
-    delete: false            # Запретим случайно удалить страницу
+  - name: "snow-crab"
+    label: "Снежный краб — редактирование"
+    delete: false
     files:
-      - label: "Снежный краб — редактирование контента"
-        name: "snow-crab"
-        file: "products/snow-crab.html"    # ← точный путь к вашему файлу
+      - label: "Контент страницы Снежный краб"
+        name: "content"
+        file: "products/data/snow-crab.json"   # сюда будет сохраняться всё
         fields:
-          # Главное фото краба
-          - label: "Главное фото продукта"
-            name: "main_image"
-            widget: "image"
-            required: true
-            hint: "Картинка слева в большом размере"
-            default: "/products/images/tokimo_snow_crab_.jpg"
-
-          # Заголовок H1
-          - label: "Заголовок (H1)"
-            name: "title"
-            widget: "string"
-            default: "Снежный краб"
-
-          # Основное описание
-          - label: "Описание продукта"
-            name: "description"
-            widget: "markdown"
-            required: false
-            buttons: ["bold", "italic", "link"]
-            editor_components: []
-            default: "Низкокалорийный продукт, в основном состоящий из рыбного белка…"
-
-          # Состав
-          - label: "Состав"
-            name: "composition"
-            widget: "string"
-            default: "Сурими, яичный порошок, растительное масло, ароматизатор натуральный крабовый, красители (кармин, маслосмолы паприки)."
-
-          # Вес
-          - label: "Вес"
-            name: "weight"
-            widget: "string"
-            default: "0.160 кг"
-
-          # Упаковка
-          - label: "Упаковка"
-            name: "packaging"
-            widget: "string"
-            default: "Вакуум"
-
-          # Температура хранения
-            name: "storage_temp"
-            widget: "string"
-            default: "от -18°С"
-
-          # Срок годности
-          - label: "Срок годности"
-            name: "shelf_life"
-            widget: "string"
-            default: "6 месяцев"
-
-          # Фото в блоке «Где купить» (Сбермаркет)
-          - label: "Логотип/фото в блоке «Где купить»"
-            name: "sber_image"
-            widget: "image"
-            default: "/products/images/sber_guy.webp"
-            hint: "Картинка справа в блоке «Где купить»"
-
-          # Текст в блоке «Где купить»
-          - label: "Текст в блоке «Где купить» (под заголовком)"
-            name: "where_to_buy_text"
-            widget: "text"
-            default: "Помимо розничных магазинов в вашем населённом пункте, вы можете приобрести нашу продукцию через <strong>Сбермаркет</strong>."
-
-          # Ссылка на кнопку Сбермаркет
-          - label: "Ссылка кнопки «Сбермаркет»"
-            name: "sber_link"
-            widget: "string"
-            default: "https://kuper.ru/?utm_referrer=https%3a%2f%2fkven.ru%2f"
+          - { label: "Главное фото",           name: "main_image",     widget: "image",   default: "/products/images/tokimo_snow_crab_.jpg" }
+          - { label: "Заголовок H1",           name: "title",          widget: "string",  default: "Снежный краб" }
+          - { label: "Описание продукта",      name: "description",    widget: "markdown", buttons: ["bold","italic","link"] }
+          - { label: "Состав",                 name: "composition",    widget: "string",  default: "Сурими, яичный порошок…" }
+          - { label: "Вес",                    name: "weight",         widget: "string",  default: "0.160 кг" }
+          - { label: "Упаковка",               name: "packaging",      widget: "string",  default: "Вакуум" }
+          - { label: "Температура хранения",   name: "storage_temp",   widget: "string",  default: "от -18°С" }
+          - { label: "Срок годности",          name: "shelf_life",  widget: "string",  default: "6 месяцев" }
+          - { label: "Фото в блоке «Где купить»", name: "sber_image",  widget: "image",   default: "/products/images/sber_guy.webp" }
+          - { label: "Текст под «Где купить?»", name: "where_to_buy_text", widget: "text", default: "Помимо розничных магазинов… через <strong>Сбермаркет</strong>." }
+          - { label: "Ссылка кнопки Сбермаркет",name: "sber_link",      widget: "string",  default: "https://kuper.ru/?utm_referrer=https%3a%2f%2fkven.ru%2f" }
