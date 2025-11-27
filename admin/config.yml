@@ -1,14 +1,14 @@
 backend:
   name: github
-  repo: ваш-логин/ваш-репозиторий   # ← ОБЯЗАТЕЛЬНО замените!
+  repo: amfkut/kvenedit   # ← ОБЯЗАТЕЛЬНО замените!
   branch: main
 
 media_folder: "products/images"
 public_folder: "/products/images"
 
 # Глобальные настройки сайта (необязательно, но полезно)
-site_url: https://ваш-логин.github.io/ваш-репозиторий
-display_url: https://ваш-логин.github.io/ваш-репозиторий
+site_url: https://amfkut.github.io/kvenedit
+display_url: https://amfkut.github.io/kvenedit
 
 # Коллекция: отдельные страницы продукции
 collections:
